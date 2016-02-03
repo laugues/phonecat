@@ -1,10 +1,25 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="phonecat" ng-strict-di>
 <head lang="en">
     <meta charset="UTF-8">
-    <title></title>
+
+    <link rel="stylesheet" href="assets/lib/bootstrap/dist/css/bootstrap.min.css"/>
+    <!--vendor-->
+    <script type="text/javascript" src="assets/lib/angular/angular.js"></script>
+    <script type="text/javascript" src="assets/lib/bootstrap/dist/js/bootstrap.js"></script>
+
+
+    <!--app modules-->
+    <script type="text/javascript" src="app/app.module.js"></script>
+    <script type="text/javascript" src="app/common/controllers/mainController.js"></script>
+    <script type="text/javascript" src="app/features/phones/phoneListController.js"></script>
+
+    <title>Formation Angular</title>
 </head>
 <body>
+
+<div ng-include="'app/app.template.html'"></div>
+
 
 </body>
 </html>

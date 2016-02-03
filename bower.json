@@ -1,4 +1,8 @@
 {
-  "name": "PhoneCat",
-  "version": "1.0.0"
+  "name": "Phone Cat",
+  "version": "1.0.0",
+  "dependencies": {
+    "angular": "1.4.9",
+    "bootstrap": "~3.3.6"
+  }
 }
