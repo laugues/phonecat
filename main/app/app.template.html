@@ -1,4 +1,4 @@
-<div class="container-fluid"  ng-controller="PhoneListController">
+<div class="container-fluid" ng-controller="PhoneListController">
     <div class="row">
         <div class="col-md-2">
             <!--Sidebar content-->
@@ -18,13 +18,16 @@
             <!--Body content-->
 
 
-            <ul class="phones">
-                <li ng-repeat="phone in phones | filter:query | orderBy:orderProp">
-                    <span>{{phone.name}}</span>
-
+            <div ng-repeat="phone in phones | filter:query | orderBy:orderProp" class="row">
+                <div class="col-md-1">
+                    <a href="#/phones/{{phone.id}}" class=""><img height="100%" width="100%"
+                                                                          ng-src="{{phone.imageUrl}}" alt="{{phone.name}}"></a>
+                </div>
+                <div class="col-md-11 nopadding">
+                    <a href="#/phones/{{phone.id}}" >{{phone.name}}</a>
                     <p>{{phone.snippet}}</p>
-                </li>
-            </ul>
+                </div>
+            </div>
 
         </div>
     </div>

@@ -1,0 +1,10 @@
+@charset "UTF-8";
+
+@import
+"variables",
+"phones";
+
+.nopadding {
+  padding: 0px !important;
+  border: solid 1px $primary-color;
+}

@@ -37,6 +37,7 @@ gulp.task('build', function (callback) {
         'html',
         'fonts',
         'vendor-css',
+        'json-assets',
         'data-js',
         'app-css',
         'images',
@@ -66,7 +67,7 @@ gulp.task('sass', function (done) {
         .pipe(sass({
             errLogToConsole: true
         }))
-        .pipe(gulp.dest(buildConfig.distFolder + '/assets/css'))
+        .pipe(gulp.dest(buildConfig.srcFolder + '/assets/css'))
         .on('end', done);
 });
 
@@ -121,7 +122,7 @@ gulp.task('app-js', function () {
  * Concat, minifie et uglut le Javascript applicatif
  */
 gulp.task('app-constants', function () {
-    return gulp.src(buildConfig.srcFolder +'/**/app.constant.js')
+    return gulp.src(buildConfig.srcFolder + '/**/app.constant.js')
         .pipe(gulp.dest(buildConfig.distFolder));
 });
 
@@ -140,7 +141,7 @@ gulp.task('vendor-js', function () {
  */
 gulp.task('data-js', function () {
     return gulp.src(buildConfig.appFiles)
-        .pipe(gulp.dest(buildConfig.distFolder+'/assets/js/'));
+        .pipe(gulp.dest(buildConfig.distFolder + '/assets/js/'));
 });
 
 
@@ -178,7 +179,7 @@ gulp.task('images', function () {
  * Copie du favicon
  */
 gulp.task('favicon', function () {
-    gulp.src(buildConfig.srcFolder +'/favicon.ico')
+    gulp.src(buildConfig.srcFolder + '/favicon.ico')
         .pipe(gulp.dest(buildConfig.distFolder));
 });
 
@@ -197,9 +198,8 @@ gulp.task('locales', function () {
  */
 gulp.task('angular-locales', function () {
     gulp.src(buildConfig.localeJsFiles)
-        .pipe(gulp.dest(buildConfig.distFolder +'/assets/lib/angular-i18n'));
+        .pipe(gulp.dest(buildConfig.distFolder + '/assets/lib/angular-i18n'));
 });
-
 
 
 gulp.task('serve', function () {
@@ -254,9 +254,9 @@ gulp.task('clean-trad-en', function () {
  *
  */
 gulp.task('build-trad-fr-only', function () {
-    return gulp.src(['!'+buildConfig.srcFolder +
-        '/assets/locale/{**-fr,**-en.json,**-de.json,fr.json,en.json,de.json}.json',
-            buildConfig.srcFolder + '/assets/locale/**.json'])
+    return gulp.src(['!' + buildConfig.srcFolder +
+    '/assets/locale/{**-fr,**-en.json,**-de.json,fr.json,en.json,de.json}.json',
+        buildConfig.srcFolder + '/assets/locale/**.json'])
         .pipe(rename(function (path) {
             path.basename += "-fr";
         }))
@@ -269,8 +269,8 @@ gulp.task('build-trad-fr-only', function () {
  *
  */
 gulp.task('build-trad-en-only', function () {
-    return gulp.src(['!'+buildConfig.srcFolder +
-        '/assets/locale/{**-fr,**-en.json,**-de.json,fr.json,en.json,de.json}.json',
+    return gulp.src(['!' + buildConfig.srcFolder +
+    '/assets/locale/{**-fr,**-en.json,**-de.json,fr.json,en.json,de.json}.json',
         buildConfig.srcFolder + '/assets/locale/**.json'])
         .pipe(rename(function (path) {
             path.basename += "-en";
@@ -330,6 +330,13 @@ gulp.task('build-trad', function (callback) {
         callback);
 });
 
+/**
+ * Method to copy json file from assets
+ */
+gulp.task('json-assets', function () {
+    return gulp.src(buildConfig.srcFolder + '/assets/json/**/*.json')
+        .pipe(gulp.dest(buildConfig.distFolder + '/assets/json'));
+});
 
 /**
  * Simple function to remove item from array by value.
@@ -354,7 +361,7 @@ gulp.task('webdriver_update', webdriver_update);
 
 gulp.task('webdriver_standalone', webdriver_standalone);
 
-gulp.task('serverhttp',function(){
+gulp.task('serverhttp', function () {
     var stream = gulp.src('main')
         .pipe(webserver({
             port: 4000

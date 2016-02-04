@@ -34,7 +34,8 @@ module.exports = {
      * Liste des librairies minifié à utiliser en prod
      */
     vendorJavascriptFiles: [
-        'main/assets/lib/angular/angular.js'
+        'main/assets/lib/angular/angular.js',
+        'main/assets/lib/bootstrap/dist/js/bootstrap.js'
     ],
     /**
      *
@@ -45,5 +46,6 @@ module.exports = {
     localeJsFiles: [
     ],
     vendorCssFiles: [
+        'main/assets/lib/bootstrap/dist/css/bootstrap.min.css'
     ]
 };
