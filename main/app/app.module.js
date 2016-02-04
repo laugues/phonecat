@@ -1,8 +1,13 @@
 'use strict';
 
 
-angular.module('phonecat', ['ngResource'])
-    .config(['$resourceProvider', function($resourceProvider) {
-    // Don't strip trailing slashes from calculated URLs
-    $resourceProvider.defaults.stripTrailingSlashes = false;
-}]);
+angular.module('phonecat.directives', []);
+angular.module('phonecat.services', []);
+
+angular.module('phonecat', ['ngResource', 'phonecat.services', 'phonecat.directives'])
+    .config(['$resourceProvider', function ($resourceProvider) {
+        // Don't strip trailing slashes from calculated URLs
+        $resourceProvider.defaults.stripTrailingSlashes = false;
+    }]).config(['CartProvider', function () {
+
+    }]);

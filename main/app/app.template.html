@@ -15,20 +15,14 @@
 
         </div>
         <div class="col-md-10">
-            <!--Body content-->
+            <div class="phones">
+                <div ng-repeat="phone in phones | filter: query| orderBy:orderProp">
+                    <phone phone-object="phone" on-click="click()">
 
+                    </phone>
 
-            <div ng-repeat="phone in phones | filter:query | orderBy:orderProp" class="row">
-                <div class="col-md-1">
-                    <a href="#/phones/{{phone.id}}" class=""><img height="100%" width="100%"
-                                                                          ng-src="{{phone.imageUrl}}" alt="{{phone.name}}"></a>
-                </div>
-                <div class="col-md-11 nopadding">
-                    <a href="#/phones/{{phone.id}}" >{{phone.name}}</a>
-                    <p>{{phone.snippet}}</p>
                 </div>
             </div>
-
         </div>
     </div>
 </div>

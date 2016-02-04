@@ -7,5 +7,6 @@ angular.module('phonecat')
 
         $scope.phones = Phones.getAll();
         $scope.orderProp = 'age';
+        $scope.titi="titsdfsdfsdi";
     }]);
 
