@@ -1,6 +1,6 @@
 <div class="container-fluid" ng-controller="PhoneListController">
     <div class="row">
-        <div class="col-md-2">
+        <div class="col-md-3">
             <!--Sidebar content-->
             <div class="row">
                 Search: <input ng-model="query">
@@ -12,12 +12,28 @@
                     <option value="age">Newest</option>
                 </select>
             </div>
-
+            <div class="row">
+                <div style="color:red">Max Amount Authorized : {{cart.maxAmount}} $</div>
+                <div style="color:red">Total : {{cartTotal}} $</div>
+                <table class="table table-hover">
+                    <tr>
+                        <th>Year</th>
+                        <th>Price</th>
+                    </tr>
+                    <tr ng-repeat="selectedPhone in selectedPhones track by $index">
+                        <td>{{selectedPhone.year}}</td>
+                        <td>{{selectedPhone.price}} $</td>
+                    </tr>
+                </table>
+                <div >
+                    <p style="color:blue"></p>
+                </div>
+            </div>
         </div>
-        <div class="col-md-10">
+        <div class="col-md-9">
             <div class="phones">
                 <div ng-repeat="phone in phones | filter: query| orderBy:orderProp">
-                    <phone phone-object="phone" on-click="click()">
+                    <phone phone-object="phone" add-to-cart-action="addToCart(e)">
 
                     </phone>
 

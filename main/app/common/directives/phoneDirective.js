@@ -3,16 +3,15 @@
 angular.module('phonecat.directives')
     .directive('phone', [function () {
 
-        function _link(){
+        var _link = function (scope, element, attrs) {
 
         }
-
 
         return {
             restrict:'EA',
             scope:{
                 phoneObject:'=',
-                onClick:'&'
+                addToCartAction:'&'
             },
             transclude:true,
             templateUrl:'app/common/directives/phoneTemplate.html',

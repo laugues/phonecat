@@ -6,7 +6,8 @@
     </div>
     <div class="col-md-11 nopadding">
         <a href="#/phones/{{phoneObject.id}}">{{phoneObject.name}}</a>
-        <p>{{phoneObject.snippet}}</p>
-        <button type="button">Add to Panier</button>
+        <p style="color:green">Description : {{phoneObject.snippet}}</p>
+        <p style="color:red">Price :{{phoneObject.price}} $</p>
+        <button class="btn btn-success" ng-click="addToCartAction({e:phoneObject})" type="button">Add to Cart</button>
     </div>
 </div>
